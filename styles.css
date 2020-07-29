@@ -1,0 +1,105 @@
+html{
+    scroll-behavior: smooth;
+}
+body{
+    width: 100%;
+    margin: 0px;
+    
+}
+a{
+    color: white;
+    text-decoration: none;
+    transition: all 0.6s ease;
+}
+#home{
+    height: 500px;
+    background-image: url(try.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-blend-mode: lighten;
+
+}
+#about{
+    background-image: url(brown.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+ 
+}
+#education{
+    background-color: white;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+
+}
+#organization{
+    background-color:  beige;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+#works{
+    background-color:  #eaeaea;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+#lifeverse{
+    height: 500px;
+    background-image: url(bwbible.jpg);
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+#contact{
+    background-color: rgba(0, 0, 0, 0.918);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+#navbar{
+    position: fixed;
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 12px;
+}
+#navbar span{
+    display: inline-block;
+    letter-spacing: 2.5px;
+    padding-top: 17px;
+    padding-left:15px;
+    padding-right:15px;  
+    padding-bottom: 17px;
+    
+}
+a:hover{
+    color: rgb(253, 149, 63);
+    transition: all 0.6s ease;
+}
+#name{
+    font-size:30px;
+    color:white;
+}
+#verse{
+
+    font-weight: bold;
+    font-size:45px;
+    box-sizing: border-box;
+    padding: 60px;
+    text-align: center;
+    color: white;
+    text-shadow: 0 3px 0 black;
+}
+#chapter{
+    font-size:65px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    text-shadow: 0 3px 0 black;
+}
+p{
+    font-size:50px;
+}
