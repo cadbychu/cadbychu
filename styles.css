@@ -22,7 +22,8 @@ a{
     background-size: 100% 570px;
 }
 #about{
-    background-color:rgba(139, 93, 55, 0.925);
+    background-color:rgba(204, 175, 112, 0.925);
+    background-image: linear-gradient(rgba(99, 81, 44, 0.925),rgba(207, 184, 140, 0.925));
     background-repeat: no-repeat;
     background-size: 100% 100%;
     padding:20px;
@@ -41,6 +42,7 @@ a{
 }
 #works{
     background-color:  #eaeaea;
+    background-image: linear-gradient(#eaeaea,#777575);
     background-repeat: no-repeat;
     background-size: cover;
     padding:50px;
