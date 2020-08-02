@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" type="text/css" href="styles_edit.css">
+    <body>
+        <form id="login">
+            <input type="email" name="email" id="email" placeholder="example@example.com" autofocus></input>
+            <input type="password" name="password" id="password" placeholder="password"></input>
+            <button id="submit">Log In</button>
+        </form>
+
+    
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
+    <script src="getdata.js"></script>
+    <script>
+          // Your web app's Firebase configuration
+          var firebaseConfig = {
+        apiKey: "AIzaSyCNy4SfH4DnOqVd8oUrJu_-nreG8NhGPf0",
+        authDomain: "resume-d3f10.firebaseapp.com",
+        databaseURL: "https://resume-d3f10.firebaseio.com",
+        projectId: "resume-d3f10",
+        storageBucket: "resume-d3f10.appspot.com",
+        messagingSenderId: "22762866453",
+        appId: "1:22762866453:web:9fcdb88469d9ad846a0b1c",
+        measurementId: "G-2SC128XY6E"
+        };
+        // Initialize Firebase
+        var defaultProject = firebase.initializeApp(firebaseConfig);
+        var db= firebase.firestore();
+    </script>
+    </body>
+
+
+</html>

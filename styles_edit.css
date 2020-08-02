@@ -1,0 +1,35 @@
+body{
+    size: 100% 100%;
+    background-image: url("https://i.redd.it/bmftmmydirfx.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: -100px 50px;
+    background-color: black;
+}
+#login{
+    
+    height: 200px;
+    width: 400px;
+    border: 2px solid rgb(26, 70, 78);
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -110px;
+    margin-left: 50px;
+    padding:20px;
+}
+#email{
+    width: 230px;
+}
+#password{
+    width: 230px;
+}
+#submit{
+    width: 100px;
+    
+}
