@@ -17,7 +17,6 @@
         //get "others" data 
         db.collection("others").get().then(function(snapshot){
             snapshot.forEach(function(doc){
-            console.log(doc.data()); 
             if(doc.data().welcome != undefined)
                 welcome.append(doc.data().welcome+'');
             if (doc.data().briefdesc != undefined)

@@ -1,31 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="styles_edit.css">
-    <body>
-        <form id="login">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <link rel="icon" type="image/png" href="favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="favicon-16x16.png" sizes="16x16" />
+    <!--log in page-->
+        <div id="loginpage">
+            <form id="login">
             <input type="email" name="email" id="email" placeholder="example@example.com" autofocus></input>
             <input type="password" name="password" id="password" placeholder="password"></input>
             <button id="submit">Log In</button>
-        </form>
+            </form>
+        </div>
+        
+    <!--editable page-->
+    <body id="editable" >
+        <header id="home">
+            <nav id="navbar" style="visibility:hidden">
+                <div style="position: fixed;top:10px;left:40px;" ><img style="border-radius: 50%;" src="favicon-32x32.png"></div>
+                <span><a href="#home">Home</a></span>
+                <span><a href="#about">About</a></span>
+                <span><a href="#education">Education</a></span>
+                <span><a href="#organization">Organization</a></span>
+                <span><a href="#works">Works</a></span>
+                <span><a href="#lifeverse">Life Verse</a></span>
+                <span><a href="#contact">Contact</a></span>
+            </nav>
+            <div id="container1">
+                 <div id="imagelogo">
+                     <img src="babypic.jpg" class="dp"></img>
+                 </div>
+                 <div id="welcome"></div>
+                 <div id="briefdesc"></div>
+            </id>
+        </header>
+        <section id="about">
+            <div id="container2">
+                <div id="introduction"><span style="font-size:30px;font-weight:bold">About me<br><br></span></div>
+                <div id="skills">
+                    <span id="c" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"></span>
+                        <div class="bar">
+                        <div id="cskill">80%</div>
+                        </div>
+                    <span id="htmlcss"  style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"></span>
+                        <div class="bar">
+                        <div id="hskill">70%</div>
+                        </div>
+                    <span id="js"  style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"></span>
+                        <div class="bar">
+                        <div id="jsskill">65%</div>
+                        </div>
+                    <span id="jq"  style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"></span>
+                        <div class="bar">
+                        <div id="jqskill">60%</div>
+                        </div>
+                </div>
+            </div>
+        </section>
+        <section id="education">
+           <div id="container3">
+                <div id="titleEDU">EDUCATION <button type="button" id="addedu">+</button>
+                    <div id="popupedu" class="hideform">
+                        <button id="closeeduform" style="float: right">X</button>
+                        <form id="eduform" style="text-align: left">
+                            School:<br>
+                            <input type="text" id="school" placeholder="School">
+                            <br>
+                            Degree:<br>
+                            <input type="text" id="degree" placeholder="Degree">
+                            <br>
+                            Year Start:<br>
+                            <input type="number" id="year_start" placeholder="e.g. 2020">
+                            <br>
+                            Year End:<br>
+                            <input type="number" id="year_end" placeholder="e.g. 2020">
+                            <br><br>
+                            <input type="submit" value="Add">
+                        </form>
+                    </div>
+                </div>
+                <div id="edu">
+                    <ul id="edu-list"></ul>
+                </div>
+           </div>
+        </section>
+        <section id="organization">
+            <div id="container4">
+                <div id="titleORG">ORGANIZATION <button type="button" id="addorg">+</button>
+                    <div id="popuporg" class="hideform">
+                        <button id="closeorgform" style="float: right">X</button>
+                        <form id="orgform"  style="text-align: left">
+                            Name:<br>
+                            <input type="text" id="name" placeholder="Name">
+                            <br>
+                            Position:<br>
+                            <input type="text" id="position" placeholder="Position">
+                            <br>
+                            Year Start:<br>
+                            <input type="number" id="year_start" placeholder="e.g. 2020">
+                            <br>
+                            Year End:<br>
+                            <input type="number" id="year_end" placeholder="e.g. 2020">
+                            <br><br>
+                            <input type="submit" value="Add">
+                        </form>
+                    </div>
+                </div>
+                <div id="org">
+                    <ul id="org-list"></button></ul>
+                </div>
+           </div>
+        </section>
+        <section id="works">
+            <div id="container5">
+                <div id="titleWORK">WORKS <button type="button" id="addwork">+</button>
+                    <div id="popupwork" class="hideform">
+                        <button id="closeworkform" style="float: right">X</button>
+                        <form id="workform" style="text-align: left">
+                            Name:<br>
+                            <input type="text" id="name" placeholder="Name">
+                            <br>
+                            Creator:<br>
+                            <input type="text" id="creator" placeholder="Creator">
+                            <br>
+                            Year Start:<br>
+                            <input type="number" id="year_start" placeholder="e.g. 2020">
+                            <br>
+                            Link(URL):<br>
+                            <input type="text" id="link" placeholder="https://example.com">
+                            <br><br>
+                            <input type="submit" value="Add">
+                        </form>
+                    </div>
+                </div>
+                <div id="work">
+                    <ul id="work-list"></ul>
+                </div>
+           </div>
+        </section>
+        <section id="lifeverse">
+            <div id="verse">
+                “For I know the plans I have for you,” declares the Lord, 
+                “plans to prosper you and not to harm you, plans to give
+                you hope and a future.”
+                </div>
+            <div id="chapter">Jeremiah 29:11</div>
+        </section>
+        <section id="contact">
+            <div id="titleCONTACT">CONTACT ME @:</div>
+            <div id="contact-list">
+            </div>
+        </section>
+        <footer>
+        <a href="#home" class="fa" style="font-size: 60px">
+            <text id="button_top">&#xf139;</text>
+            </a>
+        </footer>
 
-    
+        <script>
+            $('#addedu').on('click', function () {
+                $('#popupedu').show();
+                $(this).hide();
+            });   
+            $('#closeeduform').on('click', function () {
+                $('#popupedu').hide();
+                $('#addedu').show();
+            });   
+
+            $('#addorg').on('click', function () {
+                $('#popuporg').show();
+                $(this).hide();
+            });     
+            $('#closeorgform').on('click', function () {
+                $('#popuporg').hide();
+                $('#addorg').show();
+            });   
+   
+            $('#addwork').on('click', function () {
+                $('#popupwork').show();
+                $(this).hide();
+            });       
+            $('#closeworkform').on('click', function () {
+                $('#popupwork').hide();
+                $('#addwork').show();
+            });   
+        </script>
+
+       
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-firestore.js"></script>
-    <script>
-          // Your web app's Firebase configuration
-          var firebaseConfig = {
-        apiKey: "AIzaSyCNy4SfH4DnOqVd8oUrJu_-nreG8NhGPf0",
-        authDomain: "resume-d3f10.firebaseapp.com",
-        databaseURL: "https://resume-d3f10.firebaseio.com",
-        projectId: "resume-d3f10",
-        storageBucket: "resume-d3f10.appspot.com",
-        messagingSenderId: "22762866453",
-        appId: "1:22762866453:web:9fcdb88469d9ad846a0b1c",
-        measurementId: "G-2SC128XY6E"
-        };
+    <script src="getdata_edit.js"></script>
+   
+   <script>
         // Initialize Firebase
-        var defaultProject = firebase.initializeApp(firebaseConfig);
         var db= firebase.firestore();
         const auth =firebase.auth();
         const loginForm = document.querySelector("#login");
@@ -34,9 +207,71 @@
             const email=loginForm['email'].value;
             const password=loginForm['password'].value;
         auth.signInWithEmailAndPassword(email, password).then(cred =>{
-            console.log(cred.user);
+                var x = document.getElementById("loginpage");
+                var y= document.getElementById("editable");
+                var z=document.getElementById("navbar");
+                x.style.display = "none";
+                y.style.display= "initial";
+                z.style.visibility = "visible";
+                window.scrollTo(0,0);   
+
+                //sticky nav bar
+                    $(document).ready(function(){
+                    $(window).scroll(function(){
+                      var scroll = $(window).scrollTop();
+                    if (scroll > 493) {
+                    $("#navbar").css( "background-color","#2F4F4F");
+                    }
+                    else{
+                      $("#navbar").css("background" , "none");  	
+                    }
+                    });
+               
+            });
+        }).catch(err =>{
+            console.log(err);
+            alert("Stay Away Hacker :(");
         });
         });
+        //add data to db
+        var eduform=document.getElementById("eduform");
+        var orgform=document.getElementById("orgform");
+        var workform=document.getElementById("workform");
+
+        eduform.addEventListener('submit', (e) => {
+        e.preventDefault();
+        db.collection('education').add({
+        Degree: eduform.degree.value,
+        School: eduform.school.value,
+        year_end: Number(eduform.year_end.value),
+        year_start: Number(eduform.year_start.value)
+        });
+        eduform.reset();
+        });
+
+        orgform.addEventListener('submit', (e) => {
+        e.preventDefault();
+        db.collection('organizations').add({
+        name: orgform.name.value,
+        position: orgform.position.value,
+        year_end: Number(orgform.year_end.value),
+        year_start: Number(orgform.year_start.value)
+        });
+        orgform.reset();
+        });
+
+        workform.addEventListener('submit', (e) => {
+        e.preventDefault();
+        db.collection('works').add({
+        name: workform.name.value,
+        creator: workform.creator.value,
+        link: workform.link.value,
+        year_start: Number(workform.year_start.value)
+        });
+        workform.reset();
+        });
+
+
     </script>
 
     </body>

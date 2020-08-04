@@ -5,6 +5,8 @@ body{
     width: 100%;
     margin: 0px;
     font-family:'Cinzel';
+    top:0px;
+    left:0px;
 }
 li{
     padding-bottom:30px;
@@ -261,7 +263,7 @@ a:hover{
 }
 #work-list a:hover{
     color:#2b5858;
-    font-size: 16px;
+    font-size: 18px;
 }
 #contact-list{
     text-align: center;
