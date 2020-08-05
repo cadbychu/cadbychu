@@ -42,6 +42,8 @@
                     getOther(change.doc);
                     }else if(change.type == 'modified'){
                         document.querySelector('#textIntro').innerHTML="";
+                        document.querySelector("#welcome").innerHTML="";
+                        document.querySelector("#briefdesc").innerHTML="";
                         getOther(change.doc);
                     };
                 });
