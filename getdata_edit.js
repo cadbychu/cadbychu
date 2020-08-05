@@ -15,14 +15,15 @@
             var db= firebase.firestore();
             
             //get "others" data 
-            db.collection("others").get().then(function(snapshot){
-                snapshot.forEach(function(doc){
+            function getOther(doc){
                 if(doc.data().welcome != undefined)
-                    welcome.append(doc.data().welcome+'');
+                welcome.append(doc.data().welcome+'');
                 if (doc.data().briefdesc != undefined)
                     briefdesc.append(doc.data().briefdesc+'');
-                if (doc.data().introduction != undefined)
-                   introduction.append(doc.data().introduction+'');
+                if (doc.data().introduction != undefined){
+                   textIntro.append(doc.data().introduction+'');
+                   editInfo.append(doc.data().introduction+'');
+                };
                 if (doc.data().js != undefined)
                     js.append(doc.data().js+'');
                 if (doc.data().htmlcss != undefined)
@@ -31,6 +32,18 @@
                     jq.append(doc.data().jq+'');
                 if (doc.data().c != undefined)
                     c.append(doc.data().c+'');
+            }
+
+            //listen for change in db(others)
+            db.collection('others').onSnapshot(snapshot=>{
+                let changes= snapshot.docChanges();
+                changes.forEach(change =>{
+                   if(change.type == 'added'){
+                    getOther(change.doc);
+                    }else if(change.type == 'modified'){
+                        document.querySelector('#textIntro').innerHTML="";
+                        getOther(change.doc);
+                    };
                 });
             });
             
@@ -66,7 +79,6 @@
             //listen for change in db(edu)
             db.collection('education').orderBy('year_end').onSnapshot(snapshot=>{
                 let changes= snapshot.docChanges();
-                console.log(changes);
                 changes.forEach(change =>{
                     if(change.type == 'added'){
                         listEdu(change.doc);
@@ -74,6 +86,7 @@
                         let li= edu.querySelector('[data-id='+change.doc.id+']');
                         console.log(li);
                         edu.removeChild(li);
+                        alert("Item deleted.");
                     };
                 });
             });
@@ -111,13 +124,13 @@
             //listen for change in db(org)
             db.collection('organizations').orderBy('year_end').onSnapshot(snapshot=>{
                 let changes= snapshot.docChanges();
-                console.log(changes);
                 changes.forEach(change =>{
                     if(change.type == 'added'){
                         listOrg(change.doc);
                     }else if (change.type == 'removed'){
                         let li= org.querySelector('[data-id='+change.doc.id+']');
                         org.removeChild(li);
+                        alert("Item deleted.");
                     }
                 });
             }); 
@@ -164,14 +177,13 @@
             //listen for change in db(work)
             db.collection('works').orderBy('year_start').onSnapshot(snapshot=>{
                 let changes= snapshot.docChanges();
-                console.log(changes);
                 changes.forEach(change =>{
                     if(change.type == 'added'){
                         listWork(change.doc);
                     }else if (change.type == 'removed'){
                         let li= work.querySelector('[data-id='+change.doc.id+']');
-                        console.log(li);
                         work.removeChild(li);
+                        alert("Item deleted.");
                     }
                 });
             }); 

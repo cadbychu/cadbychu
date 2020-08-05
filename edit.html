@@ -33,7 +33,7 @@
             </nav>
             <div id="container1">
                  <div id="imagelogo">
-                     <img src="babypic.jpg" class="dp"></img>
+                     <img src="green.jpg" class="dp"></img>
                  </div>
                  <div id="welcome"></div>
                  <div id="briefdesc"></div>
@@ -41,7 +41,18 @@
         </header>
         <section id="about">
             <div id="container2">
-                <div id="introduction"><span style="font-size:30px;font-weight:bold">About me<br><br></span></div>
+                <div id="introduction">
+                    <span style="font-size:30px;font-weight:bold">About me       
+                    <button id="editIntro" class="fa fa-edit" style="border-radius: 25%;border-color:grey;font-size:20px"></button><br><br>
+                    <div id="divEdit" class="hideform" style="position:absolute;">
+                        <textarea id="editInfo" ></textarea>
+                        <button id="saveIntro">Save</button>
+                    </div>
+                    <div id="textIntro" style="font:Cinzel;font-size:25px;font-weight: normal;">
+                    </div>
+                   
+                    </span>
+                </div>
                 <div id="skills">
                     <span id="c" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"></span>
                         <div class="bar">
@@ -64,9 +75,8 @@
         </section>
         <section id="education">
            <div id="container3">
-                <div id="titleEDU">EDUCATION <button type="button" id="addedu">+</button>
+                <div id="titleEDU">EDUCATION    <button type="button" id="addedu">+</button>
                     <div id="popupedu" class="hideform">
-                        <button id="closeeduform" style="float: right">X</button>
                         <form id="eduform" style="text-align: left">
                             School:<br>
                             <input type="text" id="school" placeholder="School">
@@ -91,9 +101,8 @@
         </section>
         <section id="organization">
             <div id="container4">
-                <div id="titleORG">ORGANIZATION <button type="button" id="addorg">+</button>
+                <div id="titleORG">ORGANIZATION     <button type="button" id="addorg">+</button>
                     <div id="popuporg" class="hideform">
-                        <button id="closeorgform" style="float: right">X</button>
                         <form id="orgform"  style="text-align: left">
                             Name:<br>
                             <input type="text" id="name" placeholder="Name">
@@ -118,9 +127,8 @@
         </section>
         <section id="works">
             <div id="container5">
-                <div id="titleWORK">WORKS <button type="button" id="addwork">+</button>
+                <div id="titleWORK">WORKS   <button type="button" id="addwork">+</button>
                     <div id="popupwork" class="hideform">
-                        <button id="closeworkform" style="float: right">X</button>
                         <form id="workform" style="text-align: left">
                             Name:<br>
                             <input type="text" id="name" placeholder="Name">
@@ -152,7 +160,7 @@
             <div id="chapter">Jeremiah 29:11</div>
         </section>
         <section id="contact">
-            <div id="titleCONTACT">CONTACT ME @:</div>
+            <div id="titleCONTACT">CONTACT ME @: <button class="fa fa-edit" style="border-radius: 25%;border-color:grey;color:rgb(49, 49, 49);font-size: 24px;"></button></div>
             <div id="contact-list">
             </div>
         </section>
@@ -163,32 +171,20 @@
         </footer>
 
         <script>
+            $('#editIntro').on('click', function () {
+                $('#divEdit').toggle();
+            });
             $('#addedu').on('click', function () {
-                $('#popupedu').show();
-                $(this).hide();
+                $('#popupedu').toggle();
             });   
-            $('#closeeduform').on('click', function () {
-                $('#popupedu').hide();
-                $('#addedu').show();
-            });   
-
+          
             $('#addorg').on('click', function () {
-                $('#popuporg').show();
-                $(this).hide();
+                $('#popuporg').toggle();
             });     
-            $('#closeorgform').on('click', function () {
-                $('#popuporg').hide();
-                $('#addorg').show();
-            });   
    
             $('#addwork').on('click', function () {
-                $('#popupwork').show();
-                $(this).hide();
+                $('#popupwork').toggle();
             });       
-            $('#closeworkform').on('click', function () {
-                $('#popupwork').hide();
-                $('#addwork').show();
-            });   
         </script>
 
        
@@ -233,11 +229,22 @@
             alert("Stay Away Hacker :(");
         });
         });
-        //add data to db
+       
+       
         var eduform=document.getElementById("eduform");
         var orgform=document.getElementById("orgform");
         var workform=document.getElementById("workform");
+        var editInfo=document.getElementById("editInfo"); 
+        //update data from db
+        saveIntro.addEventListener('click', (e) => {
+            console.log(editInfo.value)
+            db.collection('others').doc('intro').update({
+                introduction: editInfo.value
+            });
+            alert("Info Updated :)");
+        });
 
+        //add data to db
         eduform.addEventListener('submit', (e) => {
         e.preventDefault();
         db.collection('education').add({
@@ -273,6 +280,7 @@
         workform.reset();
         alert("Work added :)");
         });
+
 
 
     </script>
