@@ -80,16 +80,16 @@
                         <form id="eduform" style="text-align: left">
                             School:<br>
                             <input type="text" id="school" placeholder="School">
-                            <br>
+                            <br><br>
                             Degree:<br>
                             <input type="text" id="degree" placeholder="Degree">
-                            <br>
+                            <br><br>
                             Year Start:<br>
                             <input type="number" id="year_start" placeholder="e.g. 2020">
-                            <br>
+                            <br><br>
                             Year End:<br>
                             <input type="number" id="year_end" placeholder="e.g. 2020">
-                            <br><br>
+                            <br><br><br>
                             <input type="submit" value="Add">
                         </form>
                     </div>
@@ -106,16 +106,16 @@
                         <form id="orgform"  style="text-align: left">
                             Name:<br>
                             <input type="text" id="name" placeholder="Name">
-                            <br>
+                            <br><br>
                             Position:<br>
                             <input type="text" id="position" placeholder="Position">
-                            <br>
+                            <br><br>
                             Year Start:<br>
                             <input type="number" id="year_start" placeholder="e.g. 2020">
-                            <br>
+                            <br><br>
                             Year End:<br>
                             <input type="number" id="year_end" placeholder="e.g. 2020">
-                            <br><br>
+                            <br><br><br>
                             <input type="submit" value="Add">
                         </form>
                     </div>
@@ -132,16 +132,16 @@
                         <form id="workform" style="text-align: left">
                             Name:<br>
                             <input type="text" id="name" placeholder="Name">
-                            <br>
+                            <br><br>
                             Creator:<br>
                             <input type="text" id="creator" placeholder="Creator">
-                            <br>
+                            <br><br>
                             Year Start:<br>
                             <input type="number" id="year_start" placeholder="e.g. 2020">
-                            <br>
+                            <br><br>
                             Link(URL):<br>
                             <input type="text" id="link" placeholder="https://example.com">
-                            <br><br>
+                            <br><br><br>
                             <input type="submit" value="Add">
                         </form>
                     </div>
@@ -160,7 +160,26 @@
             <div id="chapter">Jeremiah 29:11</div>
         </section>
         <section id="contact">
-            <div id="titleCONTACT">CONTACT ME @: <button class="fa fa-edit" style="border-radius: 25%;border-color:grey;color:rgb(49, 49, 49);font-size: 24px;"></button></div>
+            <div id="titleCONTACT">CONTACT ME @:
+            <button id="editcontact" class="fa fa-edit" style="border-radius: 25%;border-color:grey;color:rgb(49, 49, 49);font-size: 24px;"></button>
+            <div id="popupcontact" class="hideform">
+                <form id="contactform">
+                    Github:<br>
+                    <input type="text" id="githubField" placeholder="https://example.com">
+                    <br><br>
+                    LinkedIn:<br>
+                    <input type="text" id="linkedinField" placeholder="https://example.com">
+                    <br><br>
+                    Twitter:<br>
+                    <input type="text" id="twitterField" placeholder="https://example.com">
+                    <br><br>
+                    Facebook:<br>
+                    <input type="text" id="facebookField" placeholder="https://example.com">
+                    <br><br><br>
+                    <input type="submit" value="Save" style="color: black;width:150px;">
+                </form>
+              </div>
+            </div>
             <div id="contact-list">
             </div>
         </section>
@@ -172,19 +191,24 @@
 
         <script>
             $('#editIntro').on('click', function () {
-                $('#divEdit').toggle();
+                $('#divEdit').fadeToggle(500);
             });
             $('#addedu').on('click', function () {
-                $('#popupedu').toggle();
+                $('#popupedu').slideToggle(600);
+                
             });   
           
             $('#addorg').on('click', function () {
-                $('#popuporg').toggle();
+                $('#popuporg').slideToggle(600);
             });     
    
             $('#addwork').on('click', function () {
-                $('#popupwork').toggle();
+                $('#popupwork').slideToggle(600);
             });       
+            
+            $('#editcontact').on('click', function () {
+                $('#popupcontact').slideToggle(600);
+            });
         </script>
 
        
@@ -235,11 +259,26 @@
         var orgform=document.getElementById("orgform");
         var workform=document.getElementById("workform");
         var editInfo=document.getElementById("editInfo"); 
-        //update data from db
+        var contactform=document.getElementById("contactform");
+
+        //update data from db(intro)
         saveIntro.addEventListener('click', (e) => {
-            console.log(editInfo.value)
+            e.preventDefault();
             db.collection('others').doc('intro').update({
                 introduction: editInfo.value
+            });
+            alert("Info Updated :)");
+        });
+
+        //update data from db(contact)
+        contactform.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log(contactform.value)
+            db.collection('contacts').doc('link').update({
+                facebook: contactform.facebookField.value,
+                twitter: contactform.twitterField.value,
+                github: contactform.githubField.value,
+                linkedin: contactform.linkedinField.value
             });
             alert("Info Updated :)");
         });

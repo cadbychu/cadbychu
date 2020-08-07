@@ -36,7 +36,7 @@
         
         //get education data
         const edu= document.querySelector('#edu-list')
-        db.collection("education").orderBy('year_end').get().then(function(snapshot){
+        db.collection("education").orderBy('year_end','desc').get().then(function(snapshot){
             snapshot.forEach(function(doc) {
                let li= document.createElement('li');
                let school=document.createElement('h2');
@@ -57,7 +57,7 @@
 
         //get org data
         const org= document.querySelector('#org-list')
-        db.collection("organizations").orderBy('year_end').get().then(function(snapshot){
+        db.collection("organizations").orderBy('year_start','desc').get().then(function(snapshot){
             snapshot.forEach(function(doc) {
                let li= document.createElement('li');
                let name=document.createElement('h2');
@@ -104,7 +104,7 @@
 
         //get contact data
         const contact= document.querySelector('#contact-list')
-        db.collection("others").get().then(function(snapshot){
+        db.collection("contacts").get().then(function(snapshot){
             snapshot.forEach(function(doc) {
                 if(doc.data().github != undefined || doc.data().linkedin != undefined || doc.data().twitter != undefined){
                let li= document.createElement('li');
@@ -149,12 +149,3 @@
             });
         });
         
-
-        /* delete a document from db    
-         db.collection("others").doc("hobbies").delete().then(function() {
-         console.log("Document successfully deleted!");
-         }).catch(function(error) {
-         console.error("Error removing document: ", error);
-        });
-        */
-   

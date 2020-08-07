@@ -17,7 +17,7 @@
             //get "others" data 
             function getOther(doc){
                 if(doc.data().welcome != undefined)
-                welcome.append(doc.data().welcome+'');
+                    welcome.append(doc.data().welcome+'');
                 if (doc.data().briefdesc != undefined)
                     briefdesc.append(doc.data().briefdesc+'');
                 if (doc.data().introduction != undefined){
@@ -33,9 +33,8 @@
                 if (doc.data().c != undefined)
                     c.append(doc.data().c+'');
             }
-
-            //listen for change in db(others)
-            db.collection('others').onSnapshot(snapshot=>{
+             //listen for change in db(others)
+             db.collection('others').onSnapshot(snapshot=>{
                 let changes= snapshot.docChanges();
                 changes.forEach(change =>{
                    if(change.type == 'added'){
@@ -48,7 +47,69 @@
                     };
                 });
             });
-            
+        
+            //get contact data
+            const contact= document.querySelector('#contact-list')
+            function getContact(doc){
+                    if(doc.data().github != undefined || doc.data().linkedin != undefined || doc.data().twitter != undefined){
+                   let li= document.createElement('li');
+                   let github=document.createElement('a');
+                   let linkedin=document.createElement('a');
+                   let twitter=document.createElement('a');
+                   let facebook=document.createElement('a');
+                   let githubimg = document.createElement("img");
+                   let facebookimg = document.createElement("img");
+                   let twitterimg=document.createElement("img");
+                   let linkedinimg = document.createElement("img");
+                    
+                   li.setAttribute('data-id', doc.id);
+                   github.href= doc.data().github;
+                   githubimg.src="https://cdn2.iconfinder.com/data/icons/social-icons-grey/512/GITHUB-512.png";
+                   githubimg.height=30;
+                   githubimg.width=30;
+                   linkedin.href= doc.data().linkedin;
+                   linkedinimg.src="https://hotelatlantis.com/wp-content/uploads/2017/12/linkedin-grey.png";
+                   linkedinimg.height=30;
+                   linkedinimg.width=30;
+                   twitter.href= doc.data().twitter;
+                   twitterimg.src="https://listaland.files.wordpress.com/2014/04/twitter-xxl.png";
+                   twitterimg.height=30;
+                   twitterimg.width=30;
+                   facebook.href= doc.data().facebook;
+                   facebookimg.src= "https://clipart.info/images/ccovers/1509135109gray-facebook-logo-png.png";
+                   facebookimg.height=30;
+                   facebookimg.width=30;
+                    
+                    
+                   githubField.value=doc.data().github; 
+                   twitterField.value=doc.data().twitter;
+                   facebookField.value=doc.data().facebook;
+                   linkedinField.value= doc.data().linkedin;
+                    
+                    li.appendChild(github);
+                    github.appendChild(githubimg);
+                    li.appendChild(linkedin);
+                    linkedin.appendChild(linkedinimg);
+                    li.appendChild(twitter);
+                    twitter.appendChild(twitterimg);
+                    li.appendChild(facebook);
+                    facebook.appendChild(facebookimg);
+                   contact.appendChild(li);
+                    }
+            };
+            //listen for change in db(others)
+            db.collection('contacts').onSnapshot(snapshot=>{
+               let changes= snapshot.docChanges();
+               changes.forEach(change =>{
+                  if(change.type == 'added'){
+                        getContact(change.doc);
+                   }else if(change.type == 'modified'){
+                       contact.innerHTML="";
+                       getContact(change.doc);
+                   };
+               });
+            });
+   
             //get education data
             const edu= document.querySelector('#edu-list')
             function listEdu(doc){
@@ -79,7 +140,7 @@
                     });
             };
             //listen for change in db(edu)
-            db.collection('education').orderBy('year_end').onSnapshot(snapshot=>{
+            db.collection('education').orderBy('year_end','desc').onSnapshot(snapshot=>{
                 let changes= snapshot.docChanges();
                 changes.forEach(change =>{
                     if(change.type == 'added'){
@@ -124,7 +185,7 @@
                 });
             };
             //listen for change in db(org)
-            db.collection('organizations').orderBy('year_end').onSnapshot(snapshot=>{
+            db.collection('organizations').orderBy('year_start','desc').onSnapshot(snapshot=>{
                 let changes= snapshot.docChanges();
                 changes.forEach(change =>{
                     if(change.type == 'added'){
@@ -192,51 +253,17 @@
     
     
 
-            //get contact data
-            const contact= document.querySelector('#contact-list')
-            db.collection("others").get().then(function(snapshot){
-                snapshot.forEach(function(doc) {
-                    if(doc.data().github != undefined || doc.data().linkedin != undefined || doc.data().twitter != undefined){
-                   let li= document.createElement('li');
-                   let github=document.createElement('a');
-                   let linkedin=document.createElement('a');
-                   let twitter=document.createElement('a');
-                   let facebook=document.createElement('a');
-                   let githubimg = document.createElement("img");
-                   let facebookimg = document.createElement("img");
-                   let twitterimg=document.createElement("img");
-                   let linkedinimg = document.createElement("img");
-    
-                   li.setAttribute('data-id', doc.id);
-                   github.href= doc.data().github;
-                   githubimg.src="https://cdn2.iconfinder.com/data/icons/social-icons-grey/512/GITHUB-512.png";
-                   githubimg.height=30;
-                   githubimg.width=30;
-                   linkedin.href= doc.data().linkedin;
-                   linkedinimg.src="https://hotelatlantis.com/wp-content/uploads/2017/12/linkedin-grey.png";
-                   linkedinimg.height=30;
-                   linkedinimg.width=30;
-                   twitter.href= doc.data().twitter;
-                   twitterimg.src="https://listaland.files.wordpress.com/2014/04/twitter-xxl.png";
-                   twitterimg.height=30;
-                   twitterimg.width=30;
-                   facebook.href= doc.data().facebook;
-                   facebookimg.src= "https://clipart.info/images/ccovers/1509135109gray-facebook-logo-png.png";
-                   facebookimg.height=30;
-                   facebookimg.width=30;
-    
-    
-                    li.appendChild(github);
-                    github.appendChild(githubimg);
-                    li.appendChild(linkedin);
-                    linkedin.appendChild(linkedinimg);
-                    li.appendChild(twitter);
-                    twitter.appendChild(twitterimg);
-                    li.appendChild(facebook);
-                    facebook.appendChild(facebookimg);
-                   contact.appendChild(li);
-                    }
+        
+            //listen for change in db(contact)
+            db.collection('others').onSnapshot(snapshot=>{
+                let changes= snapshot.docChanges();
+                changes.forEach(change =>{
+                   if(change.type == 'added'){
+                    
+                    }else if(change.type == 'modified'){
+                    
+                    
+                    };
                 });
             });
             
-    
